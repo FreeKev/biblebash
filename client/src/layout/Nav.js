@@ -15,7 +15,9 @@ export default class Nav extends Component {
     if(this.props.user){
       links = (
         <div>
-          <Menu.Item name='Logout' active={activeItem === 'logout'} as={Link} to='/logout' updateUser={this.props.updateUser} />
+          <Menu.Item name='Logout' active={activeItem === 'logout'}>
+          <Logout updateUser={this.props.updateUser} />
+          </Menu.Item> 
         </div>);
     }
     else {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { Form, Button, Menu } from 'semantic-ui-react'
 
 class Login extends Component {
   constructor(props) {
@@ -42,31 +44,37 @@ class Login extends Component {
     else {
       form = (<form onSubmit={this.handleSubmit}>
                 <div>
-                  <input name="Email"
+                  <Form.Input name="Email"
                        placeholder="Enter your email"
+                       fluid
+                       icon = 'user'
+                       iconPosition='left'
                        value={this.state.email}
                        onChange={this.handleEmailChange}
                   />
                 </div>
                 <div>
-                  <input name="Password"
+                  <Form.Input name="Password"
                        placeholder="Enter your password"
+                       fluid
+                       icon='lock'
+                       iconPosition='left'
                        type="password"
                        value={this.state.password}
                        onChange={this.handlePasswordChange}
                   />
                 </div>
-                <input type="submit" value="Login" className="btn-primary" />
+                <Button color='teal' fluid size='large' type="submit">Login</Button>
               </form>);
     }
     return (
       <div>
         {form}
+        <p>Not a member?</p><br />
+        <Menu.Item name='Sign-up' as={Link} to='/signup' onClick={this.handleItemClick} />
       </div>
     );
   }
 }
 
 export default Login;
-
-// <Menu.Item name='Sign-up' active={activeItem === 'signup'} as={Link} to='/signup' onClick={this.handleItemClick} />

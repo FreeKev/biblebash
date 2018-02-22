@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Form, Button, Menu } from 'semantic-ui-react'
+import { Form, Button, Menu, Header } from 'semantic-ui-react'
 
 class Login extends Component {
   constructor(props) {
@@ -43,6 +43,9 @@ class Login extends Component {
     }
     else {
       form = (<form onSubmit={this.handleSubmit}>
+                <Header as='h2' color='teal' textAlign='center'>
+                  {' '}Log-in to your account
+                </Header>
                 <div>
                   <Form.Input name="Email"
                        placeholder="Enter your email"

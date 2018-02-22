@@ -9,7 +9,7 @@ class Profile extends Component {
         </div>);
     }
     else {
-      return (<p>This is a profile page. You need to be logged in to view it.</p>);
+      return (<p>Log in to view your profile.</p>);
     }
   }
 }

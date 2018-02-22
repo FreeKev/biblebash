@@ -4,6 +4,10 @@ body {
   max-width: 50%
 }
 
+span {
+  display: none; 
+}
+
 sup {
   font-size:12px;
   color:gray;

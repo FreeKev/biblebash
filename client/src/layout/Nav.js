@@ -17,7 +17,7 @@ export default class Nav extends Component {
         <div>
           <Menu.Item name='Logout' active={activeItem === 'logout'}>
           <Logout updateUser={this.props.updateUser} />
-          </Menu.Item> 
+          </Menu.Item>
         </div>);
     }
     else {

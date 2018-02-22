@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import EditableLabel from './Editable.js';
 
 class Profile extends Component {
   render(){
@@ -13,7 +12,6 @@ class Profile extends Component {
       return (
         <div>
         <p>Log in to view your profile.</p>
-        <EditableLabel />
         </div>
       );
     }

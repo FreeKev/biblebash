@@ -5,7 +5,16 @@ body {
 }
 
 span {
-  display: none; 
+  display: none;
+}
+
+.editable {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20%;
+  height: 400px;
+  padding-right: 30px; 
 }
 
 sup {

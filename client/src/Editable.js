@@ -5,8 +5,12 @@ class EditableLabel extends Component{
     super(props)
     this.state = {
       editing: false,
-      text: 'Edit Me!'
+      text: 'Commentary'
     }
+    this.labelClicked = this.labelClicked.bind(this);
+    this.textChanged = this.textChanged.bind(this);
+    this.inputLostFocus = this.inputLostFocus.bind(this);
+    this.keyPressed = this.keyPressed.bind(this);
   }
 
 	labelClicked() {
@@ -27,17 +31,11 @@ class EditableLabel extends Component{
     }
   }
 
-  getInitialState() {
-  	return {
-    	editing: false,
-      text: 'Edit Me!'
-    }
-  }
-
   render() {
   	if(this.state.editing)
     	return <input
       	ref='textInput'
+        className='editable'
         type='text'
         onChange={this.textChanged}
         onBlur={this.inputLostFocus}

@@ -5,7 +5,7 @@ class EditableLabel extends Component{
     super(props)
     this.state = {
       editing: false,
-      text: 'Commentary'
+      text: ''
     }
     this.labelClicked = this.labelClicked.bind(this);
     this.textChanged = this.textChanged.bind(this);

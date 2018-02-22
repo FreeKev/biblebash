@@ -44,7 +44,7 @@ class Search extends Component{
   }
 
   getInfo = () => {
-    axios.get(`${API_URL}/content/${VER}.html?passage=${this.state.query}&style=fullyFormatted&key=${API_KEY}`).then(({data})=>{
+    axios.get(`${API_URL}/content/${VER}.html?passage=${this.state.query}&style=simpleParagraphs&key=${API_KEY}`).then(({data})=>{
           this.setState({
             results: data
           })

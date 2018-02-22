@@ -4,9 +4,6 @@ body {
   max-width: 50%
 }
 
-span {
-  display: none;
-}
 
 .editable {
   position: absolute;
@@ -14,7 +11,7 @@ span {
   bottom: 0;
   width: 20%;
   height: 400px;
-  padding-right: 30px; 
+  padding-right: 30px;
 }
 
 sup {
@@ -24,6 +21,7 @@ sup {
 	float: left;
   margin-left: -40%;
   clear: both;
+  top: 1.4em !important; 
 }
 
 p {

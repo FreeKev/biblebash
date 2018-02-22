@@ -14,17 +14,15 @@ export default class Nav extends Component {
     let links = <div />;
     if(this.props.user){
       links = (
-        <div>
           <Menu.Item name='Logout' active={activeItem === 'logout'}>
           <Logout updateUser={this.props.updateUser} />
           </Menu.Item>
-        </div>);
+      )
     }
     else {
       links = (
-        <div>
           <Menu.Item name='Login' active={activeItem === 'login'} as={Link} to='/login' onClick={this.handleItemClick} />
-        </div>);
+      )
     }
 
     return (
@@ -32,9 +30,6 @@ export default class Nav extends Component {
         <Menu.Item name='Home' active={activeItem === 'home'} as={Link} to='/' onClick={this.handleItemClick} />
         <Menu.Item name='Profile' active={activeItem === 'profile'} as={Link} to='/profile' onClick={this.handleItemClick} />
         <Menu.Menu position='left'>
-          <Menu.Item>
-            <Input icon='search' placeholder='Search...' />
-          </Menu.Item>
           {links}
         </Menu.Menu>
       </Menu>

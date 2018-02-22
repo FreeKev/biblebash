@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   getUser = () => {
-    // If there is a token in localStorage
     let token = localStorage.getItem('mernToken');
     if (token === 'undefined' || token === null || token === '' || token === undefined) {
       localStorage.removeItem('mernToken');
@@ -31,19 +30,15 @@ class App extends Component {
         user: null
       });
     } else {
-      //   Validate the token against the server
       axios.post('/auth/me/from/token', {
         token: token
       }).then(response => {
-        //   Store the token and user
         localStorage.setItem('mernToken', response.data.token);
         this.setState({
           token: response.data.token,
           user: response.data.user
         });
-        //   Pass User into child components and display main app
       }).catch(err => {
-        // Both the JWT and db errors will be caught here
         console.log('cdm', err);
         this.setState({
           token: '',

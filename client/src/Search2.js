@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Input } from 'semantic-ui-react'
+import { Input, Form } from 'semantic-ui-react'
 
 const Translationlist = () => (
-  <div>
-    <Input list='Translations' placeholder='Choose a Version...' />
+  <div className="trans">
+    <Input list='Translations' placeholder='Defaults KJV...' />
     <datalist id='Translations'>
       <option value='KJV1900' />
       <option value='WH1881MR' />
@@ -16,11 +16,20 @@ const Translationlist = () => (
 
 const API_URL = 'http://api.biblia.com/v1/bible'
 const API_KEY = 'fd37d8f28e95d3be8cb4fbc37e15e18e'
-const VER = 'KJV1900'
+const VER = 'KJV'
 
-const Suggestions = (props) => {
-  console.log(props.these)
-  return <div dangerouslySetInnerHTML={{__html: props.results }} />
+const Population = (props) => {
+  const options = props.these.map((item)=>(
+    <div className="these-in">
+      <h2 className="these-h2">{item.title}</h2>
+      <p className="these-p">{item.preview}</p>
+      <br />
+    </div>
+  ))
+  return (<div>
+    <div dangerouslySetInnerHTML={{__html: props.results }} />
+    <div className="these-out">{options}</div>
+    </div>)
 }
 
 class Search extends Component{
@@ -41,7 +50,6 @@ class Search extends Component{
           })
         });
     axios.get(`${API_URL}/search/${VER}.txt?query=${this.state.query}&mode=verse&start=0&limit=20&key=${API_KEY}`).then(({data})=>{
-          console.log(data);
           this.setState({
             these: data.results
           })
@@ -55,22 +63,23 @@ class Search extends Component{
         this.getInfo()
       } else {
         this.setState({results: ''})
+        this.setState({these: []})
       }
     })
   }
 
   render(){
     return(
-      <form>
+      <Form className="inline fields">
         <Translationlist />
         <input
           placeholder="Passage or verse..."
           ref={input=> this.search = input}
           onChange={this.handleInputChange} />
-          <div className="resultz">
-          <Suggestions results={this.state.results} these={this.state.these} />
-          </div>
-      </form>
+        <div className="resultz">
+        <Population results={this.state.results} these={this.state.these} />
+        </div>
+      </Form>
     )
   }
 }

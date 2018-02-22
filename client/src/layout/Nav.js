@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Logout from '../auth/Logout.js';
 import { Link } from 'react-router-dom';
-import { Input, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 
 export default class Nav extends Component {
   state = { activeItem: 'home' }

@@ -2,18 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Input, Form } from 'semantic-ui-react'
 
-const Translationlist = () => (
-  <div className="trans">
-    <Input list='Translations' placeholder='Defaults KJV...' />
-    <datalist id='Translations'>
-      <option value='KJV1900' />
-      <option value='WH1881MR' />
-      <option value='TR1894MR' />
-      <option value='TANAKH' />
-    </datalist>
-  </div>
-)
-
 const API_URL = 'http://api.biblia.com/v1/bible'
 const API_KEY = 'fd37d8f28e95d3be8cb4fbc37e15e18e'
 const VER = 'KJV'
@@ -37,6 +25,7 @@ class Search extends Component{
     super(props)
     this.state = {
       query: '',
+      query1: 'KJV',
       results: '',
       these: [],
       tran: ''
@@ -44,17 +33,26 @@ class Search extends Component{
   }
 
   getInfo = () => {
-    axios.get(`${API_URL}/content/${VER}.html?passage=${this.state.query}&style=simpleParagraphs&key=${API_KEY}`).then(({data})=>{
+    axios.get(`${API_URL}/content/${this.state.query1}.html?passage=${this.state.query}&style=simpleParagraphs&key=${API_KEY}`).then(({data})=>{
           this.setState({
             results: data
           })
         });
-    axios.get(`${API_URL}/search/${VER}.txt?query=${this.state.query}&mode=verse&start=0&limit=20&key=${API_KEY}`).then(({data})=>{
+    axios.get(`${API_URL}/search/${this.state.query1}.txt?query=${this.state.query}&mode=verse&start=0&limit=20&key=${API_KEY}`).then(({data})=>{
           this.setState({
             these: data.results
           })
         });
     }
+
+  handleInput1Change = () => {
+    this.setState({query1: this.search1.value
+    }, () => {
+      if (this.state.query1 && this.state.query.length >=3){
+        this.setState({tran: this.state.query1})
+      }
+    })
+  }
 
   handleInputChange = () => {
     this.setState({query: this.search.value
@@ -71,7 +69,10 @@ class Search extends Component{
   render(){
     return(
       <Form className="inline fields">
-        <Translationlist />
+        <input
+          placeholder="Version Defaults KJV...                      Try WH1881MR or TANAKH"
+          ref={input=> this.search1 = input}
+          onChange={this.handleInput1Change} />
         <input
           placeholder="Passage or verse..."
           ref={input=> this.search = input}

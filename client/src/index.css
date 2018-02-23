@@ -12,6 +12,10 @@ body {
   width: 20%;
   height: 400px;
   padding-right: 30px;
+  border-left: solid 1px lighten(gray,40%);
+  color:gray;
+  text-indent: 0;
+  visibility: hidden;
 }
 
 sup {
@@ -19,9 +23,9 @@ sup {
   color:gray;
   display: block;
 	float: left;
-  margin-left: -40%;
+  margin-left: -5%;
   clear: both;
-  top: 1.4em !important; 
+  top: 1.4em !important;
 }
 
 p {
@@ -29,4 +33,26 @@ p {
   font-size: 14px;
   text-shadow: 1px;
   display: inline-block;
+}
+
+span:hover {
+  background-color: rgba(0,0,0,0.08);
+}
+
+@media screen and (min-width: 500px) {
+    .editable {
+      visibility: visible;
+    }
+}
+
+@media screen and (min-width: 625px) {
+    sup {
+      margin-left: -40%;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    sup {
+      margin-left: -30%;
+    }
 }

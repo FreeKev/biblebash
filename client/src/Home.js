@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EditableLabel from './Editable.js';
-import Search from './Search2.js';
+import Search from './Search.js';
 
 class Home extends Component {
   render(){

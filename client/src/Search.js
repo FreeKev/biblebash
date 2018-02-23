@@ -96,6 +96,7 @@ class Search extends Component{
           ref={input=> this.search = input}
           onChange={this.handleInputChange} />
         <div className="resultz">
+        <br /> 
         <Population results={this.state.results} these={this.state.these} />
         </div>
       </Form>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Header } from 'semantic-ui-react'
 
 class Signup extends Component {
   constructor(props) {
@@ -45,6 +45,9 @@ class Signup extends Component {
     }
     else {
       form = (<Form onSubmit={this.handleSubmit}>
+                <Header as='h2' color='teal' textAlign='center'>
+                  {' '}Sign up for an account
+                </Header>
                 <div>
                   <input name="Name"
                        placeholder="What is your first name?"

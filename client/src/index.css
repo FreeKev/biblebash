@@ -33,7 +33,19 @@ p {
   font-size: 14px;
   text-shadow: 1px;
   display: inline-block;
+  visibility: visible;
 }
+
+/* p span:first-letter {
+  visibility: visible;
+}
+
+inline-styles cannot take above selector,
+so first-letter on-click unavailable, for now
+
+span {
+  display: block !important;
+} */
 
 span:hover {
   background-color: rgba(0,0,0,0.08);

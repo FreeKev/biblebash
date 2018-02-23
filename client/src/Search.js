@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Input, Form } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 
 const API_URL = 'http://api.biblia.com/v1/bible'
 const API_KEY = 'fd37d8f28e95d3be8cb4fbc37e15e18e'
@@ -44,7 +44,7 @@ class Search extends Component{
         });
     }
 
-  handleInput1Change = () => {
+  h1Change = () => {
     this.setState({query1: this.search1.value
     }, () => {
       if (this.state.query1 && this.state.query.length >=3){
@@ -74,7 +74,7 @@ class Search extends Component{
           placeholder="Version Defaults KJV..."
           list='translations'
           ref={input=> this.search1 = input}
-          onChange={this.handleInput1Change}/>
+          onChange={this.h1Change}/>
           <datalist id='translations'>
             <option value='WH1881MR' />
             <option value='TANAKH' />
@@ -91,6 +91,7 @@ class Search extends Component{
             <option value='RVR60' />
           </datalist>
         <input
+          className="firstsearch"
           placeholder="Passage, verse, or keyword..."
           ref={input=> this.search = input}
           onChange={this.handleInputChange} />

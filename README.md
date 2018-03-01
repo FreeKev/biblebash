@@ -1,6 +1,16 @@
 # Bible
 A simple shell for searching, reading, and studying scripture.
 
+## Screenshots
+### Prototypical Unix [Bash] Pun
+![Image of Menu](https://freekev.github.io/assets/BBCLI.png)
+### Simple Home Screen - Verse Layout
+![Image of Menu](https://freekev.github.io/assets/BB2Simp.png)
+### Extended Chapter Reading
+![Image of Menu](https://freekev.github.io/assets/BB2Greek.png)
+### Keyword Search  
+![Image of Menu](https://freekev.github.io/assets/BB2Search.png)
+
 ## Technologies Used
 * HTML
 * CSS
@@ -24,7 +34,7 @@ A simple shell for searching, reading, and studying scripture.
 * Styled all with Semantic UI
   - Modified inputs, menus, images, etc.
 
-# Backend Routes
+## Backend Routes
 METHOD | URL | Purpose
 --- | --- | ---
 POST | /auth/signup | Adds new user to user database
@@ -51,4 +61,4 @@ POST | /auth/me/from/token | Checks if token is present on browser refresh
   - Unavailable for unwieldy raw-html per Biblia API
 * Audio for reading / cantillation
 * Search Greek Old Testament(LXX) / New Testament(GNT) simultaneously
-* Create API for commentary 
+* Create API for commentary

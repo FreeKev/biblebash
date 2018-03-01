@@ -21,14 +21,31 @@ export default class Nav extends Component {
     }
     else {
       links = (
-          <Menu.Item name='Login' active={activeItem === 'login'} as={Link} to='/login' onClick={this.handleItemClick} />
+          <Menu.Item
+            name='Login'
+            active={activeItem === 'login'}
+            as={Link}
+            to='/login'
+            onClick={this.handleItemClick}
+          />
       )
     }
 
     return (
       <Menu secondary stackable>
-        <Menu.Item name='Home' active={activeItem === 'home'} as={Link} to='/' onClick={this.handleItemClick} />
-        <Menu.Item name='Profile' active={activeItem === 'profile'} as={Link} to='/profile' onClick={this.handleItemClick} />
+        <Menu.Item
+          name='Home'
+          active={activeItem === 'home'}
+          as={Link}
+          to='/'
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='Profile'
+          active={activeItem === 'profile'}
+          as={Link} to='/profile'
+          onClick={this.handleItemClick}
+        />
         <Menu.Menu position='left'>
           {links}
         </Menu.Menu>

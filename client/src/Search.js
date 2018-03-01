@@ -59,6 +59,8 @@ class Search extends Component{
     this.setState({query: this.search.value
     }, () => {
       if (this.state.query && this.state.query.length >= 4){
+        this.setState({results: ''})
+        this.setState({these: []})
         this.getInfo()
       } else {
         this.setState({results: ''})
@@ -96,7 +98,7 @@ class Search extends Component{
           ref={input=> this.search = input}
           onChange={this.handleInputChange} />
         <div className="resultz">
-        <br /> 
+        <br />
         <Population results={this.state.results} these={this.state.these} />
         </div>
       </Form>

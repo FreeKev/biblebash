@@ -4,7 +4,6 @@ body {
   max-width: 50%
 }
 
-
 .editable {
   position: absolute;
   right: 0;
@@ -35,17 +34,6 @@ p {
   display: inline-block;
   visibility: visible;
 }
-
-/* p span:first-letter {
-  visibility: visible;
-}
-
-inline-styles cannot take above selector,
-so first-letter on-click unavailable, for now
-
-span {
-  display: block !important;
-} */
 
 span:hover {
   background-color: rgba(0,0,0,0.08);

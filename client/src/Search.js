@@ -6,6 +6,14 @@ const API_URL = 'http://api.biblia.com/v1/bible'
 const API_KEY = 'fd37d8f28e95d3be8cb4fbc37e15e18e'
 
 const Population = (props) => {
+  let gotIt = /(<[^>]*>)|([^0-9]\w)(\w*)/gi;
+  function replacer(match, p1, p2, p3, offset, string) {
+    // return match + [p1];
+    return [p1] + [p2];
+  }
+  let newString = props.results.replace(gotIt, replacer);
+  // console.log(props.results.replace(gotIt, replacer));
+  // <div dangerouslySetInnerHTML={{__html: newString }} />
   const options = props.these.map((item)=>(
     <div className="these-in">
       <h2 className="these-h2">{item.title}</h2>

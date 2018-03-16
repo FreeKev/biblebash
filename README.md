@@ -56,9 +56,8 @@ POST | /auth/me/from/token | Checks if token is present on browser refresh
   - Recently given permissions for ESV et al
 * Save your comments / read other's (now only temporary)
 * Clickable passage references
-* First-letter toggle
-  - For memorization, tapping on text displays only first letter of every word
-  - Unavailable for unwieldy raw-html per Biblia API
+* ~~First-letter toggle~~ (Done!)
+  - For memorization, clicking on scripture text displays only first letter of every word
 * Audio for reading / cantillation
 * Search Greek Old Testament(LXX) / New Testament(GNT) simultaneously
 * Create API for commentary

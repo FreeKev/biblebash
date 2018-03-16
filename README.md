@@ -1,6 +1,9 @@
 # Bible
 A simple shell for searching, reading, and studying scripture.
 
+[Hosted on Heroku:](https://biblebash.herokuapp.com/ "BibleBash")
+* New Feature: For memorization work, click the searched passage to see the first letter of every word
+
 ## Screenshots
 ### Prototypical Unix [Bash] Pun
 ![Image of Menu](https://freekev.github.io/assets/BBCLI.png)

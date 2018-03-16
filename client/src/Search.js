@@ -11,22 +11,22 @@ const Population = (props) => {
   function replacer(match, p1, p2, p3, offset, string) {
     return [p1] + [p2];
   }
-  let newString = props.results.replace(innerTextToFirstLetters, replacer);
+  let newString = props.scripture.replace(innerTextToFirstLetters, replacer);
 
-  let displ = (function letterSwitch() {
-    return props.toggle === 'true' ? props.results : newString;
+  let display = (function letterSwitch() {
+    return props.toggle === 'true' ? props.scripture : newString;
   })();
 
-  const verseList = props.these.map((item)=>(
-    <div className="these-in">
-      <h2 className="these-h2">{item.title}</h2>
-      <p className="these-p">{item.preview}</p>
+  const verseList = props.topical.map((item)=>(
+    <div className="topical-in">
+      <h2 className="topical-h2">{item.title}</h2>
+      <p className="topical-p">{item.preview}</p>
       <br />
     </div>
   ))
   return (<div>
-    <div dangerouslySetInnerHTML={{__html: displ }} />
-    <div className="these-out">{verseList}</div>
+    <div dangerouslySetInnerHTML={{__html: display }} />
+    <div className="topical-out">{verseList}</div>
     </div>)
 }
 
@@ -36,9 +36,9 @@ class Search extends Component{
     this.state = {
       query: '',
       query1: 'KJV',
-      results: '',
-      these: [],
-      tran: '',
+      scripture: '',
+      topical: [],
+      translation: '',
       fullWords: true
     }
   }
@@ -46,12 +46,12 @@ class Search extends Component{
   getInfo = () => {
     axios.get(`${API_URL}/content/${this.state.query1}.html?passage=${this.state.query}&style=simpleParagraphs&key=${API_KEY}`).then(({data})=>{
           this.setState({
-            results: data
+            scripture: data
           })
         });
     axios.get(`${API_URL}/search/${this.state.query1}.txt?query=${this.state.query}&mode=verse&start=0&limit=20&key=${API_KEY}`).then(({data})=>{
           this.setState({
-            these: data.results
+            topical: data.results
           })
         });
     }
@@ -60,9 +60,9 @@ class Search extends Component{
     this.setState({query1: this.search1.value
     }, () => {
       if (this.state.query1 && this.state.query.length >=3){
-        this.setState({tran: this.state.query1})
+        this.setState({translation: this.state.query1})
       } else {
-        this.setState({tran: 'KJV'})
+        this.setState({translation: 'KJV'})
       }
     })
   }
@@ -71,12 +71,12 @@ class Search extends Component{
     this.setState({query: this.search.value
     }, () => {
       if (this.state.query && this.state.query.length >= 4){
-        this.setState({results: ''})
-        this.setState({these: []})
+        this.setState({scripture: ''})
+        this.setState({topical: []})
         this.getInfo()
       } else {
-        this.setState({results: ''})
-        this.setState({these: []})
+        this.setState({scripture: ''})
+        this.setState({topical: []})
       }
     })
   }
@@ -122,8 +122,8 @@ class Search extends Component{
         <br />
         <Population
           toggle={this.state.fullWords.toString()}
-          results={this.state.results}
-          these={this.state.these} />
+          scripture={this.state.scripture}
+          topical={this.state.topical} />
         </div>
       </Form>
     )

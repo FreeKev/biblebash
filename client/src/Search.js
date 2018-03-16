@@ -7,30 +7,15 @@ const API_URL = 'http://api.biblia.com/v1/bible'
 const API_KEY = 'fd37d8f28e95d3be8cb4fbc37e15e18e'
 
 const Population = (props) => {
-  let innerTextToFirstLetters = /(<[^>]*>)|(\w)(\w*)/gi;
+  let innerTextToFirstLetters = /(<[^>]*>)|(\d?\w)(\w*)/gi;
   function replacer(match, p1, p2, p3, offset, string) {
     return [p1] + [p2];
   }
   let newString = props.results.replace(innerTextToFirstLetters, replacer);
-  // <div dangerouslySetInnerHTML={{__html: newString }} />
-  // let displ = 'okay'
-  // 'true' === 'true' ? console.log('damn it'): console.log('fail');
 
-  let displ = letterSwitch();
-
-  function letterSwitch() {
-    if (props.toggle === 'true') {
-      // console.log('here')
-      // let displ = 'jackass!';
-      return props.results;
-      // console.log(displ);
-    } else {
-      // console.log('there')
-      // let displ = 'jackass2!';
-      return newString;
-      // console.log(displ);
-    }
-  }
+  let displ = (function letterSwitch() {
+    return props.toggle === 'true' ? props.results : newString;
+  })();
 
   const verseList = props.these.map((item)=>(
     <div className="these-in">

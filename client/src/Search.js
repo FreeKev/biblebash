@@ -81,12 +81,11 @@ class Search extends Component{
     })
   }
 
-  checkOut = () => {
+  bodyClicked = () => {
     if (this.state.fullWords === true){
-      console.log('clickin and jivin', this.state.fullWords);
       this.setState({fullWords: false})
-    } else { this.setState({fullWords: true})
-      console.log('clickin and jivin', this.state.fullWords);
+    } else {
+      this.setState({fullWords: true})
     }
   }
 
@@ -118,7 +117,7 @@ class Search extends Component{
           placeholder="Passage, verse, or keyword..."
           ref={input=> this.search = input}
           onChange={this.handleInputChange} />
-        <div onClick={this.checkOut} className="resultz">
+        <div onClick={this.bodyClicked} className="resultz">
         <br />
         <Population
           toggle={this.state.fullWords.toString()}

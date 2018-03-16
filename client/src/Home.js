@@ -14,7 +14,7 @@ class Home extends Component {
         <Image
           rounded
           spaced='right'
-          src='http://www.iconsplace.com/download/4eb2ac-holy-bible-256.png'
+          src='https://www.iconsplace.com/download/4eb2ac-holy-bible-256.png'
           size='small'
         />
         </div>

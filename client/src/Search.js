@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Form } from 'semantic-ui-react'
 
-const API_URL = 'http://api.biblia.com/v1/bible'
+const API_URL = 'https://api.biblia.com/v1/bible'
 // Public key ->
 const API_KEY = 'fd37d8f28e95d3be8cb4fbc37e15e18e'
 

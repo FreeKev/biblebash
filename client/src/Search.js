@@ -3,18 +3,36 @@ import axios from 'axios'
 import { Form } from 'semantic-ui-react'
 
 const API_URL = 'http://api.biblia.com/v1/bible'
+// Public key ->
 const API_KEY = 'fd37d8f28e95d3be8cb4fbc37e15e18e'
 
 const Population = (props) => {
-  let gotIt = /(<[^>]*>)|([^0-9]\w)(\w*)/gi;
+  let innerTextToFirstLetters = /(<[^>]*>)|(\w)(\w*)/gi;
   function replacer(match, p1, p2, p3, offset, string) {
-    // return match + [p1];
     return [p1] + [p2];
   }
-  let newString = props.results.replace(gotIt, replacer);
-  // console.log(props.results.replace(gotIt, replacer));
+  let newString = props.results.replace(innerTextToFirstLetters, replacer);
   // <div dangerouslySetInnerHTML={{__html: newString }} />
-  const options = props.these.map((item)=>(
+  // let displ = 'okay'
+  // 'true' === 'true' ? console.log('damn it'): console.log('fail');
+
+  let displ = letterSwitch();
+
+  function letterSwitch() {
+    if (props.toggle === 'true') {
+      // console.log('here')
+      // let displ = 'jackass!';
+      return props.results;
+      // console.log(displ);
+    } else {
+      // console.log('there')
+      // let displ = 'jackass2!';
+      return newString;
+      // console.log(displ);
+    }
+  }
+
+  const verseList = props.these.map((item)=>(
     <div className="these-in">
       <h2 className="these-h2">{item.title}</h2>
       <p className="these-p">{item.preview}</p>
@@ -22,8 +40,8 @@ const Population = (props) => {
     </div>
   ))
   return (<div>
-    <div dangerouslySetInnerHTML={{__html: props.results }} />
-    <div className="these-out">{options}</div>
+    <div dangerouslySetInnerHTML={{__html: displ }} />
+    <div className="these-out">{verseList}</div>
     </div>)
 }
 
@@ -35,7 +53,8 @@ class Search extends Component{
       query1: 'KJV',
       results: '',
       these: [],
-      tran: ''
+      tran: '',
+      fullWords: true
     }
   }
 
@@ -77,6 +96,15 @@ class Search extends Component{
     })
   }
 
+  checkOut = () => {
+    if (this.state.fullWords === true){
+      console.log('clickin and jivin', this.state.fullWords);
+      this.setState({fullWords: false})
+    } else { this.setState({fullWords: true})
+      console.log('clickin and jivin', this.state.fullWords);
+    }
+  }
+
   render(){
     return(
       <Form className="inline fields">
@@ -105,9 +133,12 @@ class Search extends Component{
           placeholder="Passage, verse, or keyword..."
           ref={input=> this.search = input}
           onChange={this.handleInputChange} />
-        <div className="resultz">
+        <div onClick={this.checkOut} className="resultz">
         <br />
-        <Population results={this.state.results} these={this.state.these} />
+        <Population
+          toggle={this.state.fullWords.toString()}
+          results={this.state.results}
+          these={this.state.these} />
         </div>
       </Form>
     )
